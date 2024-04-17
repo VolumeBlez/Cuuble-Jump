@@ -1,0 +1,54 @@
+{
+    "name": "Input",
+    "maps": [
+        {
+            "name": "Gameplay",
+            "id": "9539c92a-dbbd-4aad-a49b-664799f01903",
+            "actions": [
+                {
+                    "name": "Move",
+                    "type": "Value",
+                    "id": "e97e77c1-0ce4-423b-9d29-c180030c722d",
+                    "expectedControlType": "Vector3",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Act",
+                    "type": "Button",
+                    "id": "a67ef46b-7fab-4baf-b22d-304105b93d02",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "de4aea83-940b-48b6-9951-b968bb3da2a3",
+                    "path": "<Sensor>/acceleration",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "231ac655-9cd5-47bc-bd85-8b4a19da4659",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Act",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
