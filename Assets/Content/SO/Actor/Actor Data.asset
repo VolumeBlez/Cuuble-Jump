@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5467d60f5a811d4daf4f58b6adc948d, type: 3}
   m_Name: Actor Data
   m_EditorClassIdentifier: 
-  <MoveSpeed>k__BackingField: 650
+  <MoveSpeed>k__BackingField: 1650
   <JumpHeight>k__BackingField: 4
   <Gravity>k__BackingField: 5

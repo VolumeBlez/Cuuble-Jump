@@ -32,14 +32,13 @@ public class Actor : MonoBehaviour
 
     private void FixedUpdate()
     {
-        SetCurrentMoveDirection();
+        _rb.velocity = _currentMoveDirection;
     }
 
     private void SetCurrentMoveDirection()
     {
         _currentMoveDirection.x = _newMoveDirection.x * _data.MoveSpeed * Time.deltaTime;
         _currentMoveDirection.y = _rb.velocity.y;
-        _rb.velocity = _currentMoveDirection;
     }
 
     public void SetJump(float jumpForce)
