@@ -2,26 +2,26 @@ using UnityEngine;
 
 public class Actor : MonoBehaviour
 {
-    [SerializeField] private InputHandler _handler;
     [SerializeField] private ActorData _data;
     [SerializeField] private Rigidbody2D _rb;
-    [SerializeField] private float _levelWidth;
 
+    private InputHandler _handler;
     private Vector2 _currentMoveDirection;
     private Vector2 _newMoveDirection;
+    private float _levelWidth;
 
-    private void Start()
+    public void Init(float levelGravity, float levelWidth, InputHandler handler)
     {
-        _rb.gravityScale = _data.Gravity;
+        _rb.gravityScale = levelGravity;
+        _levelWidth = levelWidth;
+        _handler = handler;
+        
         _handler.InputMoveDirectionChanged += OnInputMoveDirectionChanged;
     }
 
-    private void OnInputMoveDirectionChanged(Vector3 inputDirection)
+    private void OnDisable()
     {
-        if(_newMoveDirection.x != inputDirection.x)
-        {
-            _newMoveDirection.x = inputDirection.x;
-        }
+        _handler.InputMoveDirectionChanged -= OnInputMoveDirectionChanged;
     }
 
     private void Update() 
@@ -41,11 +41,6 @@ public class Actor : MonoBehaviour
         _currentMoveDirection.y = _rb.velocity.y;
     }
 
-    public void SetJump(float jumpForce)
-    {        
-        _rb.velocity = new Vector2(_rb.velocity.x, jumpForce);
-    }
-
     private void SetActorInScreen()
     {
         if(transform.position.x > _levelWidth)
@@ -54,5 +49,18 @@ public class Actor : MonoBehaviour
         else if(transform.position.x < -_levelWidth)
             transform.position += new Vector3(_levelWidth * 2, 0, 0);
         
+    }
+
+    private void OnInputMoveDirectionChanged(Vector3 inputDirection)
+    {
+        if(_newMoveDirection.x != inputDirection.x)
+        {
+            _newMoveDirection.x = inputDirection.x;
+        }
+    }
+
+    public void SetJump(float jumpForce)
+    {        
+        _rb.velocity = new Vector2(_rb.velocity.x, jumpForce);
     }
 }

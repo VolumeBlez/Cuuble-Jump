@@ -1,48 +1,41 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlatformGenerator
 {
-    private Transform _platformParent;
-    private List<Platform> _platforms;
-    private float _maxXSpred;
-    private float _minYSpread;
-    private float _maxYSpread;
+    private readonly PlatformPool _pool;
+    private readonly PlatformGenerationData _data;
 
-    public PlatformGenerator(float minYSpread, float maxYSpread, float maxXSpred, Transform platformParent, Platform prefab)
+    public PlatformGenerator(PlatformGenerationData data, PlatformPool pool)
     {
-        _minYSpread = minYSpread;
-        _maxYSpread = maxYSpread;
-        _maxXSpred = maxXSpred;
-        _platformParent = platformParent;
+        _pool = pool;
+        _data = data;
+    }
 
-        _platforms = new(40);
+    public void Generate(float firstY)
+    {
+        Vector2 position;
+        position.x = Random.Range(-_data.MaxXSpread, _data.MaxXSpread);
+        position.y = firstY;
 
-        for (int i = 0; i < 40; i++)
+        SetUpPlatform(position);
+
+        for (int i = 1; i < _data.PlatformsMaxCountOnStep; i++)
         {
-            Platform platform = GameObject.Instantiate(prefab, Vector2.zero, Quaternion.identity, _platformParent);
-            _platforms.Add(platform);
+            position.y += Random.Range(_data.MinYSpread, _data.MaxYSpread);
+
+            if(position.y >= + _data.GenerationBorderStep + firstY)
+                break;
+
+            position.x = Random.Range(-_data.MaxXSpread, _data.MaxXSpread);
+            SetUpPlatform(position);
         }
     }
 
-    public void Generate(float firstY, float generatorBorder)
+    private void SetUpPlatform(Vector2 position)
     {
-        Vector2 position;
-        position.x = Random.Range(-_maxXSpred, _maxXSpred);
-        position.y = firstY;
-
-        _platforms[0].transform.position = position;
-
-        for (int i = 1; i < _platforms.Count; i++)
-        {
-            position.y += Random.Range(_minYSpread, _maxYSpread);
-
-            if(position.y >= generatorBorder)
-                break;
-
-            position.x = Random.Range(-_maxXSpred, _maxXSpred);
-            _platforms[i].transform.position = position;
-        }
+        Platform platform = _pool.GetPool();
+        platform.transform.position = position;
+        platform.gameObject.SetActive(true);
     }
 
 }

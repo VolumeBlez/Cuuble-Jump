@@ -6,7 +6,7 @@ public class DeathBar : MonoBehaviour
     {
         if(other.GetComponent<Platform>() != null)
         {
-            // despawn platform in pool
+            other.gameObject.SetActive(false);
         }
         else if(other.GetComponent<Actor>() != null)
         {

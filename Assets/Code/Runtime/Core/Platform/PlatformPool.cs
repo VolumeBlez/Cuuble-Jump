@@ -1,18 +1,33 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlatformPool : MonoBehaviour
+public class PlatformPool
 {
-    // Start is called before the first frame update
-    void Start()
+    private List<Platform> _platforms;
+    
+    public PlatformPool(Platform prefabToPool, Transform poolParent, int poolSize)
     {
-        
+        _platforms = new(poolSize);
+
+        for (int i = 0; i < poolSize; i++)
+        {
+            Platform platfrom = GameObject.Instantiate(prefabToPool, Vector2.zero, Quaternion.identity, poolParent);
+            platfrom.gameObject.SetActive(false);
+            _platforms.Add(platfrom);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public Platform GetPool()
     {
-        
+        for (int i = 0; i < _platforms.Count; i++)
+        {
+            if(!_platforms[i].isActiveAndEnabled)
+            {
+                return _platforms[i];
+            }
+        }
+
+        throw new ArgumentOutOfRangeException($"pool is out!");
     }
 }
