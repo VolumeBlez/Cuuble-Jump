@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eef7f2889ed8de249992529555cc9296, type: 3}
-  m_Name: Platform Generation Data
+  m_Name: Test
   m_EditorClassIdentifier: 
   <PlatfromPrefab>k__BackingField: {fileID: 7596500983904994599, guid: afeebf98807445441ae4410ecf41652e, type: 3}
   <MaxXSpread>k__BackingField: 6
@@ -19,4 +19,4 @@ MonoBehaviour:
   <GenerationBorderStep>k__BackingField: 40
   <BorderOffset>k__BackingField: 10
   <PlatformsMaxCountOnStep>k__BackingField: 80
-  <GenerationStartY>k__BackingField: 0
+  <GenerationStartY>k__BackingField: 5

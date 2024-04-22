@@ -15,7 +15,7 @@ public class Actor : MonoBehaviour
         _rb.gravityScale = levelGravity;
         _levelWidth = levelWidth;
         _handler = handler;
-        
+
         _handler.InputMoveDirectionChanged += OnInputMoveDirectionChanged;
     }
 
@@ -61,6 +61,7 @@ public class Actor : MonoBehaviour
 
     public void SetJump(float jumpForce)
     {        
+        Debug.Log("Jump " + jumpForce);
         _rb.velocity = new Vector2(_rb.velocity.x, jumpForce);
     }
 }

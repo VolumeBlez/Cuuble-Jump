@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 4449269159736206151}
   - component: {fileID: 1074266083349748589}
   - component: {fileID: 7957454223790243749}
-  - component: {fileID: 4251147225503102741}
+  - component: {fileID: 7596500983904994599}
   m_Layer: 6
-  m_Name: Paddle
+  m_Name: Platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -151,7 +151,7 @@ PlatformEffector2D:
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
---- !u!114 &4251147225503102741
+--- !u!114 &7596500983904994599
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -160,7 +160,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1742204115673133226}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae0eca76eff8f8245bd63b841993aa66, type: 3}
+  m_Script: {fileID: 11500000, guid: 81e668a344d8d514d9b89b5377507555, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _jumpForce: 25

@@ -13,5 +13,4 @@ MonoBehaviour:
   m_Name: Actor Data
   m_EditorClassIdentifier: 
   <MoveSpeed>k__BackingField: 1650
-  <JumpHeight>k__BackingField: 4
-  <Gravity>k__BackingField: 5
+  <StartJumpHeight>k__BackingField: 300

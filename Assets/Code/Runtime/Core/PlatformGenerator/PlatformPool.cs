@@ -6,13 +6,13 @@ public class PlatformPool
 {
     private List<Platform> _platforms;
     
-    public PlatformPool(Platform prefabToPool, Transform poolParent, int poolSize)
+    public PlatformPool(Platform prefabToPool, Transform parent, int poolSize)
     {
         _platforms = new(poolSize);
 
         for (int i = 0; i < poolSize; i++)
         {
-            Platform platfrom = GameObject.Instantiate(prefabToPool, Vector2.zero, Quaternion.identity, poolParent);
+            Platform platfrom = GameObject.Instantiate(prefabToPool, Vector2.zero, Quaternion.identity, parent);
             platfrom.gameObject.SetActive(false);
             _platforms.Add(platfrom);
         }

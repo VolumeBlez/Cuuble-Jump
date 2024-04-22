@@ -10,7 +10,7 @@ public class DeathBar : MonoBehaviour
         }
         else if(other.GetComponent<Actor>() != null)
         {
-            // call death of actor
+            EventBus<ActorDieEvent>.Raise(new ActorDieEvent());
         }
     }
 }

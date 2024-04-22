@@ -4,5 +4,4 @@ using UnityEngine;
 public class ActorData : ScriptableObject
 {
     [field: SerializeField] public float MoveSpeed { get; private set; }
-    [field: SerializeField] public float JumpHeight { get; private set; }
 }

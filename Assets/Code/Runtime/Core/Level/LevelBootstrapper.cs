@@ -7,6 +7,7 @@ public class LevelBootstrapper : MonoBehaviour
     [SerializeField] private InputHandler _handler;
     [SerializeField] private PlatformGeneratorBootstrapper _generatorBootstrapper;
 
+
     private void Start()
     {
         _generatorBootstrapper.Init();

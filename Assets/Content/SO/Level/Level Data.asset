@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Level Data
   m_EditorClassIdentifier: 
   <Gravity>k__BackingField: 5
+  <LevelWidth>k__BackingField: 8

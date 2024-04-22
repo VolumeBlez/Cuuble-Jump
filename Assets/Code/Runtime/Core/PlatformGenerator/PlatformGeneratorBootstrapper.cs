@@ -12,7 +12,7 @@ public class PlatformGeneratorBootstrapper : MonoBehaviour
 
         generator.Generate(_data.GenerationStartY);
 
-        _view.Init(generator, _data.GenerationBorderStep, _data.BorderOffset);
         _view.transform.position = new Vector3(0, _data.GenerationStartY + _data.GenerationBorderStep - _data.BorderOffset, 0);
+        _view.Init(generator, _data.GenerationBorderStep, _data.BorderOffset);
     }
 }
