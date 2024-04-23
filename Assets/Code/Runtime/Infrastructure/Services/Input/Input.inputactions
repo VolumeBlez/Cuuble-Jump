@@ -15,7 +15,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Act",
+                    "name": "StartLevel",
                     "type": "Button",
                     "id": "a67ef46b-7fab-4baf-b22d-304105b93d02",
                     "expectedControlType": "Button",
@@ -52,7 +52,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Act",
+                    "action": "StartLevel",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -63,7 +63,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Act",
+                    "action": "StartLevel",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

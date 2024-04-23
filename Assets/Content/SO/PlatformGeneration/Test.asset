@@ -19,4 +19,7 @@ MonoBehaviour:
   <GenerationBorderStep>k__BackingField: 40
   <BorderOffset>k__BackingField: 10
   <PlatformsMaxCountOnStep>k__BackingField: 80
-  <GenerationStartY>k__BackingField: 5
+  <GenerationStartY>k__BackingField: 20
+  <PlatformTypes>k__BackingField:
+  - Prefab: {fileID: 0}
+    Lane: 0

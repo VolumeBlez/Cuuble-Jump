@@ -37,7 +37,7 @@ public partial class @Input: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Act"",
+                    ""name"": ""StartLevel"",
                     ""type"": ""Button"",
                     ""id"": ""a67ef46b-7fab-4baf-b22d-304105b93d02"",
                     ""expectedControlType"": ""Button"",
@@ -74,7 +74,7 @@ public partial class @Input: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Act"",
+                    ""action"": ""StartLevel"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -85,7 +85,7 @@ public partial class @Input: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Act"",
+                    ""action"": ""StartLevel"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -174,7 +174,7 @@ public partial class @Input: IInputActionCollection2, IDisposable
         // Gameplay
         m_Gameplay = asset.FindActionMap("Gameplay", throwIfNotFound: true);
         m_Gameplay_Move = m_Gameplay.FindAction("Move", throwIfNotFound: true);
-        m_Gameplay_Act = m_Gameplay.FindAction("Act", throwIfNotFound: true);
+        m_Gameplay_StartLevel = m_Gameplay.FindAction("StartLevel", throwIfNotFound: true);
         m_Gameplay_KeyMove = m_Gameplay.FindAction("KeyMove", throwIfNotFound: true);
     }
 
@@ -238,14 +238,14 @@ public partial class @Input: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Gameplay;
     private List<IGameplayActions> m_GameplayActionsCallbackInterfaces = new List<IGameplayActions>();
     private readonly InputAction m_Gameplay_Move;
-    private readonly InputAction m_Gameplay_Act;
+    private readonly InputAction m_Gameplay_StartLevel;
     private readonly InputAction m_Gameplay_KeyMove;
     public struct GameplayActions
     {
         private @Input m_Wrapper;
         public GameplayActions(@Input wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Gameplay_Move;
-        public InputAction @Act => m_Wrapper.m_Gameplay_Act;
+        public InputAction @StartLevel => m_Wrapper.m_Gameplay_StartLevel;
         public InputAction @KeyMove => m_Wrapper.m_Gameplay_KeyMove;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
@@ -259,9 +259,9 @@ public partial class @Input: IInputActionCollection2, IDisposable
             @Move.started += instance.OnMove;
             @Move.performed += instance.OnMove;
             @Move.canceled += instance.OnMove;
-            @Act.started += instance.OnAct;
-            @Act.performed += instance.OnAct;
-            @Act.canceled += instance.OnAct;
+            @StartLevel.started += instance.OnStartLevel;
+            @StartLevel.performed += instance.OnStartLevel;
+            @StartLevel.canceled += instance.OnStartLevel;
             @KeyMove.started += instance.OnKeyMove;
             @KeyMove.performed += instance.OnKeyMove;
             @KeyMove.canceled += instance.OnKeyMove;
@@ -272,9 +272,9 @@ public partial class @Input: IInputActionCollection2, IDisposable
             @Move.started -= instance.OnMove;
             @Move.performed -= instance.OnMove;
             @Move.canceled -= instance.OnMove;
-            @Act.started -= instance.OnAct;
-            @Act.performed -= instance.OnAct;
-            @Act.canceled -= instance.OnAct;
+            @StartLevel.started -= instance.OnStartLevel;
+            @StartLevel.performed -= instance.OnStartLevel;
+            @StartLevel.canceled -= instance.OnStartLevel;
             @KeyMove.started -= instance.OnKeyMove;
             @KeyMove.performed -= instance.OnKeyMove;
             @KeyMove.canceled -= instance.OnKeyMove;
@@ -298,7 +298,7 @@ public partial class @Input: IInputActionCollection2, IDisposable
     public interface IGameplayActions
     {
         void OnMove(InputAction.CallbackContext context);
-        void OnAct(InputAction.CallbackContext context);
+        void OnStartLevel(InputAction.CallbackContext context);
         void OnKeyMove(InputAction.CallbackContext context);
     }
 }

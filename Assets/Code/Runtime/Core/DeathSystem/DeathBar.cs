@@ -2,13 +2,16 @@ using UnityEngine;
 
 public class DeathBar : MonoBehaviour
 {
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnCollisionEnter2D(Collision2D other)
     {
-        if(other.GetComponent<Platform>() != null)
+        if(other.relativeVelocity.y > 0f)
+            return;
+
+        if(other.transform.GetComponent<Platform>() != null)
         {
             other.gameObject.SetActive(false);
         }
-        else if(other.GetComponent<Actor>() != null)
+        else if(other.transform.GetComponent<Actor>() != null)
         {
             EventBus<ActorDieEvent>.Raise(new ActorDieEvent());
         }

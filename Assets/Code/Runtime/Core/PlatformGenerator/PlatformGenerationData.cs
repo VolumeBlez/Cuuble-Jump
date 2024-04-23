@@ -11,4 +11,5 @@ public class PlatformGenerationData : ScriptableObject
     [field: SerializeField] public float BorderOffset { get; private set; }
     [field: SerializeField] public int PlatformsMaxCountOnStep { get; private set; }
     [field: SerializeField] public float GenerationStartY { get; private set; }
+    [field: SerializeField] public PlatformGenerationType[] PlatformTypes { get; private set; }
 }

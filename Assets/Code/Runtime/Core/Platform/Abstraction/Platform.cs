@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public abstract class Platform : MonoBehaviour, IPlatform
@@ -5,6 +6,7 @@ public abstract class Platform : MonoBehaviour, IPlatform
     [SerializeField] private float _jumpForce;
 
     public float JumpForce => _jumpForce;
+    public Type Type => GetType();
 
     public virtual void Accept(IPlatformVisitor visitor)
     {

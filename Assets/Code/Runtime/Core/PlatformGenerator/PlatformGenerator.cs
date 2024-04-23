@@ -1,4 +1,14 @@
+using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
+
+[Serializable]
+public class PlatformGenerationType
+{
+    public Platform Prefab;
+    public float Lane;
+}
+
 
 public class PlatformGenerator
 {

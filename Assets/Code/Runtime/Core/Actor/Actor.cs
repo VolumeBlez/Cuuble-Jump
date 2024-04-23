@@ -7,7 +7,7 @@ public class Actor : MonoBehaviour
 
     private InputHandler _handler;
     private Vector2 _currentMoveDirection;
-    private Vector2 _newMoveDirection;
+    private Vector2 _inputMoveDirection;
     private float _levelWidth;
 
     public void Init(float levelGravity, float levelWidth, InputHandler handler)
@@ -37,7 +37,7 @@ public class Actor : MonoBehaviour
 
     private void SetCurrentMoveDirection()
     {
-        _currentMoveDirection.x = _newMoveDirection.x * _data.MoveSpeed * Time.deltaTime;
+        _currentMoveDirection.x = _inputMoveDirection.x * _data.MoveSpeed * Time.deltaTime;
         _currentMoveDirection.y = _rb.velocity.y;
     }
 
@@ -53,15 +53,14 @@ public class Actor : MonoBehaviour
 
     private void OnInputMoveDirectionChanged(Vector3 inputDirection)
     {
-        if(_newMoveDirection.x != inputDirection.x)
+        if(_inputMoveDirection.x != inputDirection.x)
         {
-            _newMoveDirection.x = inputDirection.x;
+            _inputMoveDirection.x = inputDirection.x;
         }
     }
 
     public void SetJump(float jumpForce)
     {        
-        Debug.Log("Jump " + jumpForce);
         _rb.velocity = new Vector2(_rb.velocity.x, jumpForce);
     }
 }

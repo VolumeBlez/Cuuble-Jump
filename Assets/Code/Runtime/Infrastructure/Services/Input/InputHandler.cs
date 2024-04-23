@@ -18,14 +18,12 @@ public class InputHandler : MonoBehaviour
 
         Input.Gameplay.Move.performed += ctx => OnMove(ctx);
         Input.Gameplay.KeyMove.performed += ctx => OnKeyMove(ctx);
-        Input.Gameplay.Act.performed += ctx => OnAct(ctx);
     }
 
     public void Disable()
     {
         Input.Gameplay.Move.performed -= ctx => OnMove(ctx);
         Input.Gameplay.KeyMove.performed -= ctx => OnKeyMove(ctx);
-        Input.Gameplay.Act.performed -= ctx => OnAct(ctx);
 
         Input.Disable();
     }
