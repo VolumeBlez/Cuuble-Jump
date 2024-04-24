@@ -24,8 +24,6 @@ public class GlobalAudioPlayer : MonoBehaviour
 
     private void OnActorTouchedPlatform(ActorTouchPlatform actorTouchPlatform)
     {
-        Debug.Log(actorTouchPlatform.PlatformType.Name);
-
         if(actorTouchPlatform.PlatformType == _oneTouchPlatformType)
         {
             _source.PlayOneShot(_oneTouchPlatformSound);

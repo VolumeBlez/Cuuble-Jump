@@ -16,41 +16,49 @@ public class Bootstrapper : MonoBehaviour
     [SerializeField] private ButtonController _exitButton;
     [SerializeField] private ButtonController _reloadButton;
 
+    private EventBinding<ActorDieEvent> _actorDieEventBinding;
+    private SceneLoader _sceneLoader;
+
     private void Start()
     {
-        _reloadButton.Hide(0);
+        _actorDieEventBinding = new EventBinding<ActorDieEvent>(OnActorEvent);
+        EventBus<ActorDieEvent>.Register(_actorDieEventBinding);  
+        
         InitSystems();
-
-        EventBinding<ActorDieEvent> actorDieEventBinding = new EventBinding<ActorDieEvent>(OnActorEvent);
-        EventBus<ActorDieEvent>.Register(actorDieEventBinding);  
-
-        _reloadButton.SetClickAction(() => SceneManager.LoadScene(0));
-
-        _startButton.SetClickAction(StartLevel);
-        _startButton.SetClickAction(() => _startButton.Hide());
-
-        _exitButton.SetClickAction(() => Application.Quit());
-        _exitButton.SetClickAction(() => _exitButton.Hide());
-    }
-
-    private void OnActorEvent(ActorDieEvent dieEvent)
-    {
-        _reloadButton.Show();
-    }
-
-    public void InitSystems()
-    {
-        _generatorBootstrapper.Init();
-        _handler.Enable();
-    }
-
-    public void StartLevel()
-    {
-        _actor.Init(_data.Gravity, _data.LevelWidth, _handler);
+        InitUI();
     }
 
     private void OnDisable()
     {
         _handler.Disable();
+        EventBus<ActorDieEvent>.Unregister(_actorDieEventBinding);
+    }
+
+    private void OnActorEvent(ActorDieEvent dieEvent)
+        => _reloadButton.Show();
+    
+    public void StartLevel()
+        => _actor.Init(_data.Gravity, _data.LevelWidth, _handler);
+    
+
+    public void InitSystems()
+    {
+        _sceneLoader = new();
+        _generatorBootstrapper.Init();
+        _handler.Enable();
+    }
+
+    private void InitUI()
+    {
+        _reloadButton.SetClickAction(() => _sceneLoader.LoadMainScene());
+        _reloadButton.SetClickAction(() => _startButton.Hide(0));
+
+        _startButton.SetClickAction(StartLevel);
+        _startButton.SetClickAction(() => _startButton.Hide(0));
+
+        _exitButton.SetClickAction(() => Application.Quit());
+        _exitButton.SetClickAction(() => _startButton.Hide(0));
+
+        _reloadButton.Hide(0);
     }
 }

@@ -15,4 +15,9 @@ public static class EventBus<T> where T : IEvent
             binding.OnEventNoArgs?.Invoke();
         }
     }
+
+    public static void Clear()
+    {
+        _bindings.Clear();
+    }
 }
