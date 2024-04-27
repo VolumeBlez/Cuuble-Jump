@@ -1,4 +1,12 @@
+using System;
 using UnityEngine;
+
+[Serializable]
+public class PlatformGenerationType
+{
+    public Platform Prefab;
+    public float Chance;
+}
 
 [CreateAssetMenu(fileName = "Platform Generation Data")]
 public class PlatformGenerationData : ScriptableObject

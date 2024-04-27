@@ -7,22 +7,22 @@ public class GlobalAudioPlayer : MonoBehaviour
     [SerializeField] private AudioClip _oneTouchPlatformSound;
     [SerializeField] private AudioClip _defaultPlatformSound;
 
-    private EventBinding<ActorTouchPlatform> _actorTouchPlatformEvent;
+    private EventBinding<ActorTouchPlatformEvent> _actorTouchPlatformEvent;
     private Type _oneTouchPlatformType = typeof(OneTouchPlatform);
     private Type _defaultPlatformType = typeof(DefaultPlatform);
 
     private void OnEnable()
     {
-        _actorTouchPlatformEvent = new EventBinding<ActorTouchPlatform>(OnActorTouchedPlatform);
-        EventBus<ActorTouchPlatform>.Register(_actorTouchPlatformEvent);    
+        _actorTouchPlatformEvent = new EventBinding<ActorTouchPlatformEvent>(OnActorTouchedPlatform);
+        EventBus<ActorTouchPlatformEvent>.Register(_actorTouchPlatformEvent);    
     }
 
     private void OnDisable()
     {
-        EventBus<ActorTouchPlatform>.Unregister(_actorTouchPlatformEvent);
+        EventBus<ActorTouchPlatformEvent>.Unregister(_actorTouchPlatformEvent);
     }
 
-    private void OnActorTouchedPlatform(ActorTouchPlatform actorTouchPlatform)
+    private void OnActorTouchedPlatform(ActorTouchPlatformEvent actorTouchPlatform)
     {
         if(actorTouchPlatform.PlatformType == _oneTouchPlatformType)
         {

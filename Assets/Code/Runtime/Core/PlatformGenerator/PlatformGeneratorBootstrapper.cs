@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlatformGeneratorBootstrapper : MonoBehaviour
@@ -7,12 +8,18 @@ public class PlatformGeneratorBootstrapper : MonoBehaviour
     
     public void Init()
     {
-        PlatformPool platformPool = new(_data.PlatfromPrefab, transform, _data.PlatformsMaxCountOnStep);
-        PlatformGenerator generator = new PlatformGenerator(_data, platformPool);
+        List<PlatformPool> _platformPools = new(_data.PlatformTypes.Length);
 
-        generator.Generate(_data.GenerationStartY);
+        foreach (PlatformGenerationType platformInfo in _data.PlatformTypes)
+        {
+            _platformPools.Add(new PlatformPool(platformInfo.Prefab, transform, _data.PlatformsMaxCountOnStep));
+        }
 
-        _view.transform.position = new Vector3(0, _data.GenerationStartY + _data.GenerationBorderStep - _data.BorderOffset, 0);
-        _view.Init(generator, _data.GenerationBorderStep, _data.BorderOffset);
+
+        //PlatformPool platformPool = new(_data.PlatfromPrefab, transform, _data.PlatformsMaxCountOnStep);
+       // PlatformGenerator generator = new PlatformGenerator(_data, platformPool);
+       PlatformGenerator generator = new PlatformGenerator(_data, _platformPools);
+
+        _view.Init(generator, _data.GenerationBorderStep, _data.BorderOffset, _data.GenerationStartY);
     }
 }
