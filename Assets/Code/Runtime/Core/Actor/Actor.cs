@@ -31,17 +31,8 @@ public class Actor : MonoBehaviour
     }
 
     private void FixedUpdate()
-    {
-        //_rb.velocity = _currentMoveDirection;
-        _rb.velocity = new Vector2(_currentMoveDirection.x, _rb.velocity.y);
-    }
-
-    private void SetCurrentMoveDirection()
-    {
-        _currentMoveDirection.x = _inputMoveDirection.x * _data.MoveSpeed * Time.deltaTime;
-        //_currentMoveDirection.y = _rb.velocity.y;
-    }
-
+        => _rb.velocity = new Vector2(_currentMoveDirection.x, _rb.velocity.y);
+    
     private void SetActorInScreen()
     {
         if(transform.position.x > _levelWidth)
@@ -49,7 +40,6 @@ public class Actor : MonoBehaviour
         
         else if(transform.position.x < -_levelWidth)
             transform.position += new Vector3(_levelWidth * 2, 0, 0);
-        
     }
 
     private void OnInputMoveDirectionChanged(Vector3 inputDirection)
@@ -60,14 +50,9 @@ public class Actor : MonoBehaviour
         }
     }
 
+    private void SetCurrentMoveDirection()
+        => _currentMoveDirection.x = _inputMoveDirection.x * _data.MoveSpeed * Time.deltaTime;
+    
     public void SetJump(float jumpForce)
-    {        
-        //_rb.velocity = new Vector2(_rb.velocity.x, jumpForce);
-
-        //_currentMoveDirection.y = jumpForce;
-
-        //if(_rb.velocity.y <= 0)
-        _rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
-        
-    }
+        =>_rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
 }

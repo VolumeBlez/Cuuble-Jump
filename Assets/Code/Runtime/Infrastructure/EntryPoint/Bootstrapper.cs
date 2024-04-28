@@ -16,15 +16,15 @@ public class Bootstrapper : MonoBehaviour
     [SerializeField] private ButtonController _exitButton;
     [SerializeField] private ButtonController _reloadButton;
 
-    private EventBinding<ActorDieEvent> _actorDieEventBinding;
+    private EventBinding<ActorDieEvent> _actorDieEventHandler;
     private SceneLoader _sceneLoader;
 
     private void Start()
     {
         Application.targetFrameRate = 60;
 
-        _actorDieEventBinding = new EventBinding<ActorDieEvent>(OnActorEvent);
-        EventBus<ActorDieEvent>.Register(_actorDieEventBinding);  
+        _actorDieEventHandler = new EventBinding<ActorDieEvent>(OnActorDieEventHandler);
+        EventBus<ActorDieEvent>.Register(_actorDieEventHandler);  
         
         InitSystems();
         InitUI();
@@ -33,15 +33,14 @@ public class Bootstrapper : MonoBehaviour
     private void OnDisable()
     {
         _handler.Disable();
-        EventBus<ActorDieEvent>.Unregister(_actorDieEventBinding);
+        EventBus<ActorDieEvent>.Unregister(_actorDieEventHandler);
     }
 
-    private void OnActorEvent(ActorDieEvent dieEvent)
-        => _reloadButton.Show();
-    
-    public void StartLevel()
-        => _actor.Init(_data.Gravity, _data.LevelWidth, _handler);
-    
+    private void OnActorDieEventHandler()
+    {
+        _reloadButton.Show();
+        _handler.Disable();
+    }
 
     public void InitSystems()
     {
@@ -63,4 +62,7 @@ public class Bootstrapper : MonoBehaviour
 
         _reloadButton.Hide(0);
     }
+
+    private void StartLevel()
+        => _actor.Init(_data.Gravity, _data.LevelWidth, _handler);
 }
