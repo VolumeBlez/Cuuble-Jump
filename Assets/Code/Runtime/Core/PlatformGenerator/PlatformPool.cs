@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlatformPool
 {
     private List<Platform> _platforms;
+
+    public Type PlatformType { get; }
     
     public PlatformPool(Platform prefabToPool, Transform parent, int poolSize)
     {
@@ -16,6 +18,8 @@ public class PlatformPool
             platfrom.gameObject.SetActive(false);
             _platforms.Add(platfrom);
         }
+        
+        PlatformType = prefabToPool.GetType();
     }
 
     public Platform GetPool()

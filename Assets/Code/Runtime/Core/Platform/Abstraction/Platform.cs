@@ -15,7 +15,7 @@ public abstract class Platform : MonoBehaviour, IPlatform
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if(other.relativeVelocity.y <= 0f)
+        if(other.relativeVelocity.y <= 0.5f)
         {
             if(other.transform.TryGetComponent(out IPlatformVisitor visitor))
             {

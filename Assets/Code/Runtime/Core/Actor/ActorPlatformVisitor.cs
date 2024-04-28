@@ -6,7 +6,7 @@ public class ActorPlatformVisitor : MonoBehaviour, IPlatformVisitor
 
     public void Visit(IPlatform platform)
     {
-        EventBus<ActorTouchPlatform>.Raise(new ActorTouchPlatform() { PlatformType = platform.Type, Ycoord = transform.position.y});
         _actor.SetJump(platform.JumpForce);
+        EventBus<ActorTouchPlatformEvent>.Raise(new ActorTouchPlatformEvent() { PlatformType = platform.Type, Ycoord = transform.position.y});
     }
 }

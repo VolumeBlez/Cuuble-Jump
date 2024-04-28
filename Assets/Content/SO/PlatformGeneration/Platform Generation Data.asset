@@ -13,10 +13,20 @@ MonoBehaviour:
   m_Name: Platform Generation Data
   m_EditorClassIdentifier: 
   <PlatfromPrefab>k__BackingField: {fileID: 7596500983904994599, guid: afeebf98807445441ae4410ecf41652e, type: 3}
-  <MaxXSpread>k__BackingField: 6
-  <MaxYSpread>k__BackingField: 3.7
+  <MaxXSpread>k__BackingField: 5.8
+  <MaxYSpread>k__BackingField: 3.6
   <MinYSpread>k__BackingField: 1.5
-  <GenerationBorderStep>k__BackingField: 40
-  <BorderOffset>k__BackingField: 10
-  <PlatformsMaxCountOnStep>k__BackingField: 80
-  <GenerationStartY>k__BackingField: 0
+  <GenerationBorderStep>k__BackingField: 50
+  <BorderOffset>k__BackingField: 17
+  <PlatformsMaxCountOnStep>k__BackingField: 45
+  <GenerationStartY>k__BackingField: 20
+  <PlatformTypes>k__BackingField:
+  - Prefab: {fileID: 7596500983904994599, guid: afeebf98807445441ae4410ecf41652e, type: 3}
+    Chance: 100
+    PoolCount: 50
+  - Prefab: {fileID: 7534171235333162137, guid: 8718f94f2d8bc57409a4f6e540ccae48, type: 3}
+    Chance: 5
+    PoolCount: 15
+  - Prefab: {fileID: 4418718911808256870, guid: e54f14fad3b72be41b0a58071c61ccb8, type: 3}
+    Chance: 5
+    PoolCount: 15
