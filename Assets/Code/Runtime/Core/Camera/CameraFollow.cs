@@ -14,12 +14,12 @@ public class CameraFollow : MonoBehaviour
         _newPos = new Vector3(_selfTransform.position.x, _target.position.y , _selfTransform.position.z);
     }
 
-    void LateUpdate()
+    void Update()
     {
         if(_selfTransform.position.y < _target.position.y)
         {
             _newPos.y = _target.position.y;
-            _selfTransform.position = Vector3.SmoothDamp(_selfTransform.position, _newPos, ref _velocity, _followSpeed * Time.deltaTime);
+            _selfTransform.position = Vector3.SmoothDamp(_selfTransform.position, _newPos, ref _velocity, _followSpeed * Time.smoothDeltaTime);
         }
     }
 }

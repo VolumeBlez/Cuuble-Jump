@@ -6,6 +6,7 @@ public class PlatformGenerationType
 {
     public Platform Prefab;
     public float Chance;
+    public int PoolCount;
 }
 
 [CreateAssetMenu(fileName = "Platform Generation Data")]

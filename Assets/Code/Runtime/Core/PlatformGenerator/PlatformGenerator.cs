@@ -67,12 +67,14 @@ public class PlatformGenerator
         float currentChance = Random.Range(0, chances.Sum());
         float sum = 0;
 
+
         for (int i = 0; i < chances.Count; i++)
         {
             sum += chances[i];
             if(currentChance < sum)
             {
                 platformType = _data.PlatformTypes[i].Prefab.Type;
+                break;
             }
         }
 
@@ -83,8 +85,7 @@ public class PlatformGenerator
                 platform = pool.GetPool();
             }
         }
-
-        //platform = _platformPools[0].GetPool();
+        
         platform.transform.position = position;
         platform.gameObject.SetActive(true);
     }

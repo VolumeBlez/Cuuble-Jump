@@ -12,12 +12,9 @@ public class PlatformGeneratorBootstrapper : MonoBehaviour
 
         foreach (PlatformGenerationType platformInfo in _data.PlatformTypes)
         {
-            _platformPools.Add(new PlatformPool(platformInfo.Prefab, transform, _data.PlatformsMaxCountOnStep));
+            _platformPools.Add(new PlatformPool(platformInfo.Prefab, transform, platformInfo.PoolCount));
         }
 
-
-        //PlatformPool platformPool = new(_data.PlatfromPrefab, transform, _data.PlatformsMaxCountOnStep);
-       // PlatformGenerator generator = new PlatformGenerator(_data, platformPool);
        PlatformGenerator generator = new PlatformGenerator(_data, _platformPools);
 
         _view.Init(generator, _data.GenerationBorderStep, _data.BorderOffset, _data.GenerationStartY);

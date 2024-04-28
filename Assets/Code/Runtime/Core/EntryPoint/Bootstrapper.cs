@@ -21,6 +21,8 @@ public class Bootstrapper : MonoBehaviour
 
     private void Start()
     {
+        Application.targetFrameRate = 60;
+
         _actorDieEventBinding = new EventBinding<ActorDieEvent>(OnActorEvent);
         EventBus<ActorDieEvent>.Register(_actorDieEventBinding);  
         

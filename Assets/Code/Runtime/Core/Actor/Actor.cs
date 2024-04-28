@@ -19,7 +19,7 @@ public class Actor : MonoBehaviour
         _handler.InputMoveDirectionChanged += OnInputMoveDirectionChanged;
     }
 
-    private void OnDisable()
+    private void OnDestroy()
     {
         _handler.InputMoveDirectionChanged -= OnInputMoveDirectionChanged;
     }
@@ -32,13 +32,14 @@ public class Actor : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _rb.velocity = _currentMoveDirection;
+        //_rb.velocity = _currentMoveDirection;
+        _rb.velocity = new Vector2(_currentMoveDirection.x, _rb.velocity.y);
     }
 
     private void SetCurrentMoveDirection()
     {
         _currentMoveDirection.x = _inputMoveDirection.x * _data.MoveSpeed * Time.deltaTime;
-        _currentMoveDirection.y = _rb.velocity.y;
+        //_currentMoveDirection.y = _rb.velocity.y;
     }
 
     private void SetActorInScreen()
@@ -61,6 +62,12 @@ public class Actor : MonoBehaviour
 
     public void SetJump(float jumpForce)
     {        
-        _rb.velocity = new Vector2(_rb.velocity.x, jumpForce);
+        //_rb.velocity = new Vector2(_rb.velocity.x, jumpForce);
+
+        //_currentMoveDirection.y = jumpForce;
+
+        //if(_rb.velocity.y <= 0)
+        _rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+        
     }
 }

@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -35,7 +36,9 @@ public class InputHandler : MonoBehaviour
             InputSystem.EnableDevice(Accelerometer.current);
             Debug.Log("<color=black>Accelerometer FOUND </color>");
         }else 
+        {
             Debug.Log("Accelerometer not found!");
+        }
     }
 
     private void OnMove(InputAction.CallbackContext context)
